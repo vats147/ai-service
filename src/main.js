@@ -97,7 +97,7 @@ function createTray() {
     
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'Show AI Agent',
+            label: 'Show Vercept',
             click: () => {
                 mainWindow.show();
                 if (process.platform === 'darwin') {
@@ -106,7 +106,7 @@ function createTray() {
             }
         },
         {
-            label: 'Hide AI Agent',
+            label: 'Hide Vercept',
             click: () => {
                 mainWindow.hide();
                 if (process.platform === 'darwin') {
@@ -123,7 +123,7 @@ function createTray() {
         },
         { type: 'separator' },
         {
-            label: 'Quit AI Agent',
+            label: 'Quit Vercept',
             click: () => {
                 app.isQuiting = true;
                 app.quit();
@@ -131,7 +131,7 @@ function createTray() {
         }
     ]);
     
-    tray.setToolTip('AI Agent Desktop');
+    tray.setToolTip('Vercept');
     tray.setContextMenu(contextMenu);
     
     // Double-click to show/hide
@@ -147,15 +147,15 @@ function createTray() {
 function createMenu() {
     const template = [
         {
-            label: 'AI Agent',
+            label: 'Vercept',
             submenu: [
                 {
-                    label: 'About AI Agent',
+                    label: 'About Vercept',
                     click: () => {
                         dialog.showMessageBox(mainWindow, {
                             type: 'info',
-                            title: 'About AI Agent Desktop',
-                            message: 'AI Agent Desktop v1.0.0',
+                            title: 'About Vercept',
+                            message: 'Vercept v1.0.0',
                             detail: 'Native cross-platform task automation assistant\n\nBuilt with Electron and love ❤️'
                         });
                     }

@@ -80,7 +80,7 @@ class MCPService {
                 case 'screen_context':
                     result = {
                         applications: ['Electron App', 'Browser', 'Terminal'],
-                        activeWindow: 'AI Agent Desktop',
+                        activeWindow: 'Vercept',
                         screen: { width: 1920, height: 1080 },
                         timestamp: new Date().toISOString()
                     };
@@ -241,7 +241,7 @@ server.setRequestHandler('tools/call', async (request) => {
                     text: JSON.stringify({
                         timestamp: new Date().toISOString(),
                         screen: 'desktop',
-                        active_window: 'AI Agent Desktop',
+                        active_window: 'Vercept',
                         available_actions: ['screenshot', 'browser', 'file_ops']
                     })
                 }]
