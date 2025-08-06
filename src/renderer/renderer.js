@@ -1,8 +1,8 @@
-// AI Agent Desktop - Renderer Process
+// Vercept - Renderer Process
 const { ipcRenderer } = require('electron');
 // Removed socket.io-client dependency - using built-in AI simulation
 
-class AIAgentApp {
+class VerceptApp {
     constructor() {
         this.socket = null;
         this.isConnected = false;
@@ -34,7 +34,7 @@ class AIAgentApp {
     }
     
     async initialize() {
-        console.log('🚀 Initializing AI Agent Desktop...');
+        console.log('🚀 Initializing Vercept...');
         
         // Set up event listeners
         this.setupEventListeners();
@@ -53,7 +53,7 @@ class AIAgentApp {
             this.elements.loadingScreen.classList.add('hidden');
         }, 2000);
         
-        console.log('✅ AI Agent Desktop initialized');
+        console.log('✅ Vercept initialized');
     }
     
     setupEventListeners() {
@@ -647,7 +647,7 @@ I understand you want: "${userMessage}"
         
         // Greetings
         if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-            return "👋 Hello! I'm your AI Agent Desktop assistant. I'm ready to help you automate tasks, manage files, browse the web, and much more. What would you like me to do today?";
+            return "👋 Hello! I'm your Vercept assistant. I'm ready to help you automate tasks, manage files, browse the web, and much more. What would you like me to do today?";
         }
         
         // Screenshot requests
@@ -758,7 +758,7 @@ Let me know if you need me to break this down into specific steps or if you'd li
 
 // Initialize the app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.aiAgent = new AIAgentApp();
+    window.vercept = new VerceptApp();
 });
 
 // Handle unhandled errors

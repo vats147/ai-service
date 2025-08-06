@@ -1,4 +1,4 @@
-# AI Agent Desktop - Setup Guide
+# Vercept - Setup Guide
 
 ## Quick Start
 

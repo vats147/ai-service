@@ -1,4 +1,4 @@
-# AI Agent Desktop Assets
+# Vercept Assets
 
 This directory contains the application assets:
 
