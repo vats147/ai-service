@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Desktop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Title Bar (custom for cross-platform consistency) -->
+        <div class="title-bar">
+            <div class="title-bar-left">
+                <div class="app-icon">🤖</div>
+                <span class="app-title">AI Agent Desktop</span>
+            </div>
+            <div class="title-bar-right">
+                <div class="status-indicator" id="connectionStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Connecting...</span>
+                </div>
+                <button class="title-bar-btn minimize" id="minimizeBtn">−</button>
+                <button class="title-bar-btn close" id="closeBtn">×</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>🎯 Quick Actions</h3>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="action-btn" data-action="screenshot">
+                        📸 Take Screenshot
+                    </button>
+                    <button class="action-btn" data-action="browser">
+                        🌐 Open Browser
+                    </button>
+                    <button class="action-btn" data-action="terminal">
+                        💻 Terminal Command
+                    </button>
+                    <button class="action-btn" data-action="file">
+                        📁 File Operations
+                    </button>
+                    <button class="action-btn" data-action="workflow">
+                        ⚙️ Run Workflow
+                    </button>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h4>📊 System Status</h4>
+                    <div class="system-stats">
+                        <div class="stat">
+                            <span class="stat-label">CPU:</span>
+                            <span class="stat-value" id="cpuUsage">--</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Memory:</span>
+                            <span class="stat-value" id="memUsage">--</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Tasks:</span>
+                            <span class="stat-value" id="taskCount">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h4>🎛️ Settings</h4>
+                    <div class="settings-controls">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="autoStartEnabled">
+                            <span class="toggle-slider"></span>
+                            Auto-start
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notificationsEnabled" checked>
+                            <span class="toggle-slider"></span>
+                            Notifications
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="minimizeToTray" checked>
+                            <span class="toggle-slider"></span>
+                            Minimize to tray
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>💬 AI Assistant</h2>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" id="clearChatBtn">
+                            🗑️ Clear
+                        </button>
+                        <button class="chat-action-btn" id="exportChatBtn">
+                            💾 Export
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message assistant welcome">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p>👋 <strong>Welcome to AI Agent Desktop!</strong></p>
+                                <p>I'm your native desktop assistant for task automation. I can:</p>
+                                <ul>
+                                    <li>🌐 Browse websites and extract information</li>
+                                    <li>📁 Manage files and folders</li>
+                                    <li>💻 Execute terminal commands</li>
+                                    <li>📸 Take screenshots and analyze them</li>
+                                    <li>⚙️ Automate complex workflows</li>
+                                </ul>
+                                <p>Just type what you'd like me to do, or use the quick actions on the left!</p>
+                            </div>
+                            <div class="message-time">Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="message-avatar">🤖</div>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            class="chat-input" 
+                            id="chatInput" 
+                            placeholder="Ask me to automate a task, answer questions, or help with computer operations..."
+                            rows="1"
+                        ></textarea>
+                        <button class="send-button" id="sendButton">
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                    <div class="input-actions">
+                        <button class="input-action-btn" id="attachFileBtn">
+                            📎 Attach
+                        </button>
+                        <button class="input-action-btn" id="voiceInputBtn">
+                            🎤 Voice
+                        </button>
+                        <span class="input-counter" id="inputCounter">0/2000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-left">
+                <span class="app-version" id="appVersion">v1.0.0</span>
+                <span class="separator">•</span>
+                <span class="backend-status" id="backendStatus">Backend: Loading...</span>
+            </div>
+            <div class="footer-right">
+                <span class="performance-indicator" id="performanceIndicator">⚡ Ready</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">🤖</div>
+            <h2>AI Agent Desktop</h2>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Initializing AI engines...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="renderer.js"></script>
+</body>
+</html>
